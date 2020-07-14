@@ -36,7 +36,7 @@ class App extends Component {
   addProduct = (name, price) => {
     axios({
       method: "post",
-      url: "http://localhost:3001/add",
+      url: "/add",
       headers: {},
       data: {
         name: name,
@@ -49,7 +49,7 @@ class App extends Component {
 
   delete = (_id) => {
     axios
-      .delete(`http://localhost:3001/products/${_id}`) // <-- remove ;
+      .delete(`/products/${_id}`) // <-- remove ;
       .then(() => {
         this.componentDidMount();
       });
@@ -57,7 +57,7 @@ class App extends Component {
 
   edit = (_id) => {
     var product;
-    axios.get(`http://localhost:3001/products/${_id}`).then((res) => {
+    axios.get(`/products/${_id}`).then((res) => {
       product = res.data;
       this.setState({
         name: product.name,
@@ -68,7 +68,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3001/products").then((res) => {
+    axios.get("/products").then((res) => {
       const products = res.data;
       this.setState({ products: products });
     });
@@ -83,7 +83,7 @@ class App extends Component {
       };
       axios({
         method: "put",
-        url: `http://localhost:3001/products/${this.state._id}`,
+        url: `/products/${this.state._id}`,
         data: product,
         config: { headers: { "Content-Type": "multipart/form-data" } },
       })

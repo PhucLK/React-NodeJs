@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
 app.listen( 3002, () =>{
-    console.log('listening port 3001')
+    console.log('listening port 3002')
 })
 
 router.get('/products', async (req,res) =>{
